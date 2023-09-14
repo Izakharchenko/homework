@@ -1,0 +1,4 @@
+adjacency, actor, actor,
+liar, buoyancy, dependent,
+noticeable, prioritize, theorize,
+fanciness, governor
