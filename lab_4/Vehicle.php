@@ -12,6 +12,21 @@ trait Fuel
     }
 }
 
+trait AllWheelDrive
+{
+    protected $allWheelDrive;
+
+    public function setAllWheelDrive(bool $value)
+    {
+        $this->allWheelDrive = $value;
+    }
+
+    public function getAllWheelDrive()
+    {
+        return $this->allWheelDrive ? 'Four-wheel drive' : 'Two-wheel drive';
+    }
+}
+
 class Vehicle
 {
     public $model;
@@ -37,7 +52,7 @@ class Vehicle
 
 class Car extends Vehicle
 {
-    use Fuel;
+    use Fuel, AllWheelDrive;
 
     public function __construct($model, $serialNumber)
     {
@@ -52,7 +67,7 @@ class Car extends Vehicle
 
 class Truck extends Vehicle
 {
-    use Fuel;
+    use Fuel, AllWheelDrive;
 
     public function __construct($model, $serialNumber)
     {
@@ -71,8 +86,13 @@ $t = new Truck('Ford', 'FA21A0');
 $c->setTypeFuel('Electric');
 $t->setTypeFuel('Diesel');
 
+$c->setAllWheelDrive(false);
+$t->setAllWheelDrive(true);
+
 
 $c->show();
 echo "{$c->getTypeFuel()}", "<br>";
+echo "{$c->getAllWheelDrive()}", "<br>";
 $t->show();
 echo "{$t->getTypeFuel()}", "<br>";
+echo "{$t->getAllWheelDrive()}", "<br>";
